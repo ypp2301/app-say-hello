@@ -9,8 +9,6 @@ import (
 func main() {
 	r := gin.Default()
 	models.ConnectDataBase()
-
 	r.GET("/api/product", productcontroller.Index)
-
 	r.Run()
 }
