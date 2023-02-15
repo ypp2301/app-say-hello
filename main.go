@@ -1,10 +1,16 @@
 package main
 
 import (
-	"fmt"
-	go_say_hello "github.com/ypp2301/go-say-hello/v2"
+	"github.com/gin-gonic/gin"
+	"github.com/ypp2301/app-say-hello/controllers/productcontroller"
+	"github.com/ypp2301/app-say-hello/models"
 )
 
 func main() {
-	fmt.Println(go_say_hello.SayHello("Yudha"))
+	r := gin.Default()
+	models.ConnectDataBase()
+
+	r.GET("/api/product", productcontroller.Index)
+
+	r.Run()
 }
