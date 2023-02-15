@@ -29,3 +29,15 @@ func Show(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"products": product})
 }
+
+func Create(c *gin.Context) {
+	var product models.Product
+
+	if err := c.ShouldBindJSON(&product); err != nil {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		return
+	}
+
+	models.DB.Create(&product)
+	c.JSON(http.StatusOK, gin.H{"products": product})
+}

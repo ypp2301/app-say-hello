@@ -11,5 +11,6 @@ func main() {
 	models.ConnectDataBase()
 	r.GET("/api/product", productcontroller.Index)
 	r.GET("/api/product/:id", productcontroller.Show)
+	r.POST("/api/product/", productcontroller.Create)
 	r.Run()
 }
